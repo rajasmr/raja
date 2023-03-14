@@ -29,11 +29,6 @@ pipeline {
             }
         }
 
-        stage('Code Checkout') {
-            steps {
-               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']])
-            }
-        }
 
         stage('Code Build') {
             steps {
