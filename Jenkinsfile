@@ -28,9 +28,17 @@ pipeline {
                 """
             }
         }
+        
+         stage('Checkout') {
+            steps {
+                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajasmr/raja.git']])
+            }
+        }
 
 
-        stage('Code Build') {
+       
+        
+         stage('Code Build') {
             steps {
                  sh 'mvn install -Dmaven.test.skip=true'
             }
