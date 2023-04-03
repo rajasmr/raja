@@ -31,7 +31,9 @@ pipeline {
         
          stage('Checkout') {
             steps {
-                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajasmr/raja.git']])
+                 def checkoutResult = checkout scm
+                 env.GIT_BRANCH = checkoutResult["GIT_BRANCH"].toString().toLowerCase()
+                 echo ${env.GIT_BRANCH}
             }
         }
 
