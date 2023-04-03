@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                  def checkoutResult = checkout scm
-                 checkoutResult[GIT]
+                 checkout scm
                  env.GIT_BRANCH = checkoutResult["GIT"].toString().toLowerCase()
                  echo "This is your branch ${env.GIT_BRANCH}"
                 }
